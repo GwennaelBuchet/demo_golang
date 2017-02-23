@@ -18,7 +18,7 @@ type Calc interface {
 // Roman implementation of the calc
 type Roman struct{}
 
-func (r Roman) Sum(a, b string) string {
+func (self Roman) Sum(a, b string) string {
 
 	if a == "II" && b == "I" {
 		return "III"
@@ -32,7 +32,7 @@ func (r Roman) Sum(a, b string) string {
 // Arabic implementation of the calc
 type Arabic struct{}
 
-func (r Arabic) Sum(a, b string) int {
+func (self Arabic) Sum(a, b string) int {
 
 	x, err := strconv.Atoi(a)
 	y, err2 := strconv.Atoi(b)
@@ -42,6 +42,22 @@ func (r Arabic) Sum(a, b string) int {
 	}
 
 	return x + y
+}
+
+func (self Arabic) SumFromSlice(a []int) int {
+	r := 0
+	for _, value := range a {
+		r += value
+	}
+
+	return r
+
+	/**
+	We also could get current index:
+		for index, value := range a {
+			r += value
+		}
+	 */
 }
 ////////////////////////////////////////////////
 
