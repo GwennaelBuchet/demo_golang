@@ -15,7 +15,8 @@ func main() {
 	})
 
 	router := mux.NewRouter()
-	router.HandleFunc("/api/v1/calc/sum/{a}/{b}", calc.GetRomanSum)
+	router.HandleFunc("/api/v1/calc/roman/sum/{a}/{b}", calc.GetRomanSum)
+	router.HandleFunc("/api/v1/calc/arabic/sum/{a}/{b}", calc.GetArabicSum)
 
 	handler := c.Handler(router)
 

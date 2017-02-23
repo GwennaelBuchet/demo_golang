@@ -11,8 +11,8 @@ import (
 type Calc interface {
 	Sum(a, b string)
 }
-////////////////////////////////////////////////
 
+////////////////////////////////////////////////
 
 ////////////////////////////////////////////////
 // Roman implementation of the calc
@@ -26,6 +26,7 @@ func (self Roman) Sum(a, b string) string {
 
 	return "II"
 }
+
 ////////////////////////////////////////////////
 
 ////////////////////////////////////////////////
@@ -57,10 +58,10 @@ func (self Arabic) SumFromSlice(a []int) int {
 		for index, value := range a {
 			r += value
 		}
-	 */
+	*/
 }
-////////////////////////////////////////////////
 
+////////////////////////////////////////////////
 
 ////////////////////////////////////////////////
 // WebService handlers
@@ -73,4 +74,15 @@ func GetRomanSum(w http.ResponseWriter, r *http.Request) {
 
 	w.Write([]byte(roman.Sum(a, b)))
 }
+
+func GetArabicSum(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	a := vars["a"]
+	b := vars["b"]
+
+	var arabic *Arabic = new(Arabic)
+
+	w.Write([]byte(arabic.Sum(a, b)))
+}
+
 ////////////////////////////////////////////////
