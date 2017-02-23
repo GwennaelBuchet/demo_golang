@@ -9,16 +9,16 @@ import (
 ////////////////////////////////////////////////
 // Calc interface
 type Calc interface {
-	Sum(a, b string)
+	Sum(a, b string) string
 }
-
 ////////////////////////////////////////////////
+
 
 ////////////////////////////////////////////////
 // Roman implementation of the calc
 type Roman struct{}
 
-func (self Roman) Sum(a, b string) string {
+func (r Roman) Sum(a, b string) string {
 
 	if a == "II" && b == "I" {
 		return "III"
@@ -26,7 +26,6 @@ func (self Roman) Sum(a, b string) string {
 
 	return "II"
 }
-
 ////////////////////////////////////////////////
 
 ////////////////////////////////////////////////
@@ -62,8 +61,6 @@ func (self Arabic) SumFromSlice(a []int) int {
 }
 
 ////////////////////////////////////////////////
-
-////////////////////////////////////////////////
 // WebService handlers
 func GetRomanSum(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
@@ -81,8 +78,8 @@ func GetArabicSum(w http.ResponseWriter, r *http.Request) {
 	b := vars["b"]
 
 	var arabic *Arabic = new(Arabic)
+	result := strconv.Itoa(arabic.Sum(a, b))
 
-	w.Write([]byte(arabic.Sum(a, b)))
+	w.Write([]byte(result))
 }
-
 ////////////////////////////////////////////////
