@@ -3,12 +3,13 @@ package calc
 import (
 	"github.com/gorilla/mux"
 	"net/http"
+	"strconv"
 )
 
 ////////////////////////////////////////////////
 // Calc interface
 type Calc interface {
-	Sum(a, b string) string
+	Sum(a, b string)
 }
 ////////////////////////////////////////////////
 
@@ -24,6 +25,23 @@ func (r Roman) Sum(a, b string) string {
 	}
 
 	return "II"
+}
+////////////////////////////////////////////////
+
+////////////////////////////////////////////////
+// Arabic implementation of the calc
+type Arabic struct{}
+
+func (r Arabic) Sum(a, b string) int {
+
+	x, err := strconv.Atoi(a)
+	y, err2 := strconv.Atoi(b)
+
+	if err != nil || err2 != nil {
+		return 0
+	}
+
+	return x + y
 }
 ////////////////////////////////////////////////
 
