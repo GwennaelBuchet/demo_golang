@@ -4,7 +4,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 	"net/http"
-	"zenika.com/demos/calc/calc"
+	"github.com/GwennaelBuchet/demo_golang/calc"
 )
 
 func main() {
